@@ -10,6 +10,7 @@ class Tasks():
         for i in range(len(self.task)):
             if self.task[i][0] == name:
                 self.task[i][2] = True
+                print (f'Задача с иманем: {name} отмечена как Выполненная.')
 
     def info_task(self):  # вывод всех задач
         for i in range(len(self.task)):
@@ -45,13 +46,15 @@ def com_list():
 
 
 # __________________________________________________________________________________________
-tb = Tasks()
+tb = Tasks() # создаём книгу с задачами
+
+# добавляем пару задач для наглядности
 tb.add_task('Задача-1', '21-01-2025')
 tb.add_task('Задача-2', '21-01-2025')
 
-com_list()
+com_list() # выводим список команд
 
-while True:
+while True: # понеслась
     c = input('\nВведите команду: ')
     split_c = c.rsplit()  # разделяем на команду и параметры
     com = split_c[0]  # вынимаем команду
@@ -69,7 +72,7 @@ while True:
             tb.add_task(split_c[1], split_c[2])  # print('Пока не обрабатываем')
 
         case '/mark':
-            print('Пока не обрабатываем')
+            tb.mark_task(split_c[1])
 
         case '/exit':
             print('До свидания!')
@@ -77,5 +80,3 @@ while True:
 
         case _:
             com_list()
-
-tb.info_task()
