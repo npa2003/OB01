@@ -9,15 +9,28 @@ class Tasks():
     def mark_task(self, name):
         pass
 
-    def info_task(self):
+    def info_task(self): # вывод всех задач
         for i in range(len(self.task)):
             marked = 'НЕ выполнена'
             if self.task[i][2]:
                 marked = 'Выполнена'
             print(f'{i+1}.   {self.task[i][0]}   {self.task[i][1]}   {marked}')
 
-            # print(i[0]) # print(i[1]) # print(i[2])
+    def info_task_marked(self): # вывод отмеченных задач
+        for i in range(len(self.task)):
+            marked = 'НЕ выполнена'
+            if self.task[i][2]:
+                marked = 'Выполнена'
+                print(f'{i+1}.   {self.task[i][0]}   {self.task[i][1]}   {marked}')
 
+    def info_task_unmarked(self): # вывод НЕотмеченных задач
+        for i in range(len(self.task)):
+            marked = 'НЕ выполнена'
+            if not self.task[i][2]:
+                print(f'{i+1}.   {self.task[i][0]}   {self.task[i][1]}   {marked}')
+
+
+#__________________________________________________________________________________________
 
 def com_list():
     print('\n/list - вывести список невыполненных задач')
@@ -29,7 +42,7 @@ def com_list():
     print('ЛЮБОЙ другой набор сиволов - вывести список команд\n')
 
 
-#______________________________________________________________________________________________________________________
+#__________________________________________________________________________________________
 tb = Tasks()
 tb.add_task('Задача-1', '21-01-2025')
 tb.add_task('Задача-2', '21-01-2025')
@@ -42,10 +55,10 @@ while True:
     com = split_c[0] # вынимаем команду
     match com:
         case '/list':
-            print('Пока не обрабатываем')
+            tb.info_task_unmarked()
 
         case '/listm':
-            print('Пока не обрабатываем')
+            tb.info_task_marked()
 
         case '/lista':
             tb.info_task()
