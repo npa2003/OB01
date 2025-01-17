@@ -69,10 +69,20 @@ while True: # понеслась
             tb.info_task()
 
         case '/add':
-            tb.add_task(split_c[1], split_c[2])  # print('Пока не обрабатываем')
+            try:
+                args = split_c[2]
+            except IndexError:
+                print('Не хватает ДАТЫ.')
+            else:
+                tb.add_task(split_c[1], split_c[2])  # print('Пока не обрабатываем')
 
         case '/mark':
-            tb.mark_task(split_c[1])
+            try:
+                args = split_c[2]
+            except IndexError:
+                print('Не хватает ЗАДАНИЯ.')
+            else:
+                tb.mark_task(split_c[1])
 
         case '/exit':
             print('До свидания!')
