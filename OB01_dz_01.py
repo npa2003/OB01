@@ -78,7 +78,7 @@ while True: # понеслась
 
         case '/mark':
             try:
-                args = split_c[2]
+                args = split_c[1]
             except IndexError:
                 print('Не хватает ЗАДАНИЯ.')
             else:
